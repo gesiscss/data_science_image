@@ -10,7 +10,6 @@ build_job:
       if git diff HEAD~ --name-only | egrep 'Dockerfile'; then
         echo "####### gesiscss/singleuser-orc:r2d-$CI_COMMIT_SHA_8"
 
-        pwd
         # install repo2docker
         git clone https://github.com/jupyter/repo2docker.git
         cd repo2docker
@@ -18,10 +17,9 @@ build_job:
         python3 -m pip install -e .
         cd ..
 
-        pwd
         # build image and push
         docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD
-        jupyter-repo2docker --image-name gesiscss/singleuser-orc:r2d-$CI_COMMIT_SHA_8 --no-run .
+        python3 -m jupyter-repo2docker --image-name gesiscss/singleuser-orc:r2d-$CI_COMMIT_SHA_8 --no-run .
         docker push gesiscss/singleuser-orc:r2d-$CI_COMMIT_SHA_8
       fi;
   only:
