@@ -1,0 +1,31 @@
+stages:
+  - build
+
+build_job:
+  stage: build
+  script:
+    - |
+      REPO2DOCKER_IMAGE=ccce3fe
+      CI_COMMIT_SHA_8=${CI_COMMIT_SHA:0:8}
+      if git diff HEAD~ --name-only | egrep 'Dockerfile'; then
+        echo "####### gesiscss/singleuser-orc:r2d-$CI_COMMIT_SHA_8"
+
+        # install repo2docker
+        git clone https://github.com/jupyter/repo2docker.git
+        cd repo2docker
+        git checkout $REPO2DOCKER_IMAGE
+        pip install -e .
+
+        # build image and push
+        docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD
+        repo2docker --image-name gesiscss/singleuser-orc:r2d-$CI_COMMIT_SHA_8 --no-run .
+        docker push gesiscss/singleuser-orc:r2d-$CI_COMMIT_SHA_8
+      fi;
+  only:
+    - master
+  tags:
+    - data_science_image
+  when: on_success
+  allow_failure: false
+  dependencies: []
+  retry: 1
