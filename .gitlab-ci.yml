@@ -15,13 +15,13 @@ build_job:
         git clone https://github.com/jupyter/repo2docker.git
         cd repo2docker
         git checkout $REPO2DOCKER_IMAGE
-        pip3 install -e .
+        python3 -m pip install -e .
         cd ..
 
         pwd
         # build image and push
         docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD
-        repo2docker --image-name gesiscss/singleuser-orc:r2d-$CI_COMMIT_SHA_8 --no-run .
+        jupyter-repo2docker --image-name gesiscss/singleuser-orc:r2d-$CI_COMMIT_SHA_8 --no-run .
         docker push gesiscss/singleuser-orc:r2d-$CI_COMMIT_SHA_8
       fi;
   only:

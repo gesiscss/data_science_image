@@ -114,3 +114,4 @@ USER $NB_USER
 # https://github.com/jupyterhub/jupyterlab-hub#setup-user-environment
 RUN echo '{"hub_prefix": "/jupyter"}' >> /opt/conda/share/jupyter/lab/settings/page_config.json
 
+
