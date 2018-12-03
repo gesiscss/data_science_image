@@ -102,7 +102,7 @@ RUN conda install --quiet --yes \
 # appendix
 USER root
 ENV BINDER_URL="https://notebooks.gesis.org/binder/v2/gh/gesiscss/data_science_image/master"
-ENV REPO_URL="https://github.com/gesiscss/datascience_binder"
+ENV REPO_URL="https://github.com/gesiscss/data_science_image"
 # TODO kaos-dev -> staging
 RUN cd /tmp \
     && wget -q https://github.com/gesiscss/orc/archive/kaos-dev.tar.gz -O orc.tar.gz \
