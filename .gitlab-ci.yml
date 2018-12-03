@@ -17,8 +17,6 @@ build_job:
         python3 -m pip install -e .
         cd ..
 
-        which python3
-
         # build image and push
         docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD
         ~/.local/bin/jupyter-repo2docker --image-name gesiscss/singleuser-orc:r2d-$CI_COMMIT_SHA_8 --no-run .
