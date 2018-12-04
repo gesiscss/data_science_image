@@ -103,7 +103,7 @@ RUN conda install --quiet --yes \
 USER root
 ENV BINDER_URL="https://notebooks.gesis.org/binder/v2/gh/gesiscss/data_science_image/master"
 ENV REPO_URL="https://github.com/gesiscss/data_science_image"
-RUN cd /tmp \
+RUN cd /tmp  \
     && wget -q https://github.com/gesiscss/orc/archive/master.tar.gz -O orc.tar.gz \
     && tar --wildcards -xzf orc.tar.gz --strip 2 */jupyterhub/appendix\
     && ./appendix/run-appendix \
