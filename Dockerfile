@@ -103,9 +103,8 @@ RUN conda install --quiet --yes \
 USER root
 ENV BINDER_URL="https://notebooks.gesis.org/binder/v2/gh/gesiscss/data_science_image/master"
 ENV REPO_URL="https://github.com/gesiscss/data_science_image"
-# TODO kaos-dev -> staging
 RUN cd /tmp \
-    && wget -q https://github.com/gesiscss/orc/archive/kaos-dev.tar.gz -O orc.tar.gz \
+    && wget -q https://github.com/gesiscss/orc/archive/master.tar.gz -O orc.tar.gz \
     && tar --wildcards -xzf orc.tar.gz --strip 2 */jupyterhub/appendix\
     && ./appendix/run-appendix \
     && rm -rf orc.tar.gz appendix
