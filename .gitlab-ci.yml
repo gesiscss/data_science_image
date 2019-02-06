@@ -5,7 +5,7 @@ build_job:
   stage: build
   script:
     - |
-      REPO2DOCKER_IMAGE=ff894f44
+      REPO2DOCKER_IMAGE=9c2c7b6a
       CI_COMMIT_SHA_8=${CI_COMMIT_SHA:0:8}
       if git diff HEAD~ --name-only | egrep 'Dockerfile'; then
         echo "####### gesiscss/singleuser-orc:r2d-$CI_COMMIT_SHA_8"
