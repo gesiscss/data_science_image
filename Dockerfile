@@ -99,16 +99,6 @@ RUN conda install --quiet --yes \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
-# appendix
-USER root
-ENV BINDER_URL="https://notebooks.gesis.org/binder/v2/gh/gesiscss/data_science_image/master"
-ENV REPO_URL="https://github.com/gesiscss/data_science_image"
-RUN cd /tmp \
-    && wget -q https://github.com/gesiscss/orc/archive/master.tar.gz -O orc.tar.gz \
-    && tar --wildcards -xzf orc.tar.gz --strip 2 */jupyterhub/appendix\
-    && ./appendix/run-appendix \
-    && rm -rf orc.tar.gz appendix
-USER $NB_USER
 # for jupyterlab-hub that hub tab appears in menu
 # https://github.com/jupyterhub/jupyterlab-hub#setup-user-environment
 RUN echo '{"hub_prefix": "/jupyter"}' >> /opt/conda/share/jupyter/lab/settings/page_config.json
