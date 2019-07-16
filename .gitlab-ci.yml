@@ -5,7 +5,7 @@ build_job:
   stage: build
   script:
     - |
-      REPO2DOCKER_IMAGE=8d8c21e5
+      REPO2DOCKER_IMAGE=5ef42fc
       CI_COMMIT_SHA_SHORT="$(git rev-parse --short HEAD)"
       if git diff HEAD~ --name-only | egrep 'Dockerfile'; then
         echo "####### gesiscss/singleuser-orc:r2d-$CI_COMMIT_SHA_SHORT"
@@ -28,6 +28,5 @@ build_job:
     - data_science_image
   when: on_success
   allow_failure: false
-  # TODO install repo2docker via dependencies ?
   dependencies: []
   retry: 1

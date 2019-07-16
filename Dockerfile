@@ -1,6 +1,6 @@
 # https://hub.docker.com/r/jupyter/datascience-notebook/tags/
 # https://github.com/jupyter/docker-stacks/tree/master/datascience-notebook
-FROM jupyter/datascience-notebook:65761486d5d3
+FROM jupyter/datascience-notebook:6c3390a9292e
 
 ## Install some more R packages
 ## Install them by extending the list from https://github.com/jupyter/docker-stacks/blob/master/datascience-notebook/Dockerfile
