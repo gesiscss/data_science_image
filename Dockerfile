@@ -1,6 +1,6 @@
 # https://hub.docker.com/r/jupyter/datascience-notebook/tags/
 # https://github.com/jupyter/docker-stacks/tree/master/datascience-notebook
-FROM jupyter/datascience-notebook:7a3e968dd212
+FROM jupyter/datascience-notebook:1386e20468331
 
 ## Install some more R packages
 ## Install them by extending the list from https://github.com/jupyter/docker-stacks/blob/master/datascience-notebook/Dockerfile
@@ -99,9 +99,4 @@ RUN conda install --quiet --yes \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
-# for jupyterlab-hub that hub tab appears in menu
-# https://github.com/jupyterhub/jupyterlab-hub#setup-user-environment
-RUN echo '{"hub_prefix": "/jupyter"}' >> /opt/conda/share/jupyter/lab/settings/page_config.json
-
-RUN pip install nbgitpuller
-RUN jupyter serverextension enable --py nbgitpuller --sys-prefix
+RUN pip install --no-cache-dir nbgitpuller

@@ -5,7 +5,7 @@ build_job:
   stage: build
   script:
     - |
-      REPO2DOCKER_IMAGE=6c5c09b6
+      REPO2DOCKER_IMAGE=0dba611
       CI_COMMIT_SHA_SHORT="$(git rev-parse --short HEAD)"
       if git diff HEAD~ --name-only | egrep 'Dockerfile'; then
         echo "####### gesiscss/singleuser-orc:r2d-$CI_COMMIT_SHA_SHORT"
