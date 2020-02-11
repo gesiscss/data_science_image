@@ -39,6 +39,7 @@ FROM jupyter/datascience-notebook:3deefc7d16c7
 # Install some more python packages
 # conda-forge is already added in https://github.com/jupyter/docker-stacks/blob/master/base-notebook/Dockerfile
 RUN conda install --quiet --yes \
+    'jupyter_nbextensions_configurator' \
     'lxml=4.2.*' \
     'wordcloud=1.5.*' && \
     conda clean -tipsy && \
